@@ -1,7 +1,7 @@
 <template>
   <div class="tags">
     <div class="new">
-      <button>新增标签</button>
+      <button @click="create">新增标签</button>
     </div>
     <ul class="current">
       <li v-for="tag in dataSource" :key="tag"
@@ -18,7 +18,7 @@ import {Component, Prop} from 'vue-property-decorator';
 
 @Component
 export default class Tags extends Vue {
-  @Prop() dataSource: string[] | undefined;
+  @Prop() readonly dataSource: string[] | undefined;
   selectedTags: string[] = [];
 
   toggle(tag: string) {
@@ -27,6 +27,16 @@ export default class Tags extends Vue {
       this.selectedTags.splice(index, 1);
     } else {
       this.selectedTags.push(tag);
+    }
+    this.$emit('update:value',this.selectedTags)
+  }
+  create(){
+    const name = window.prompt('请输入标签名');
+    if(name ===''){
+      window.alert('标签名不能为空');
+    } else if (this.dataSource){
+      this.$emit('update:dataSource',
+      [...this.dataSource,name]);
     }
   }
 
