@@ -21,7 +21,6 @@ import TagHelper from '@/mixins/TagHelper';
 @Component({
   computed: {
     tagList() {
-      //TODO
       return this.$store.state.tagList;
     }
   }
