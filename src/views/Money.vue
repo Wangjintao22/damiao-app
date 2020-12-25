@@ -1,7 +1,7 @@
 <template>
   <div>
     <Layout class-prefix="layout">
-      <NumberPad @update:value="onUpdateAmount" @submit="saveRecord"/>
+      <NumberPad :value.sync="record.amount" @submit="saveRecord"/>
       <Tabs :data-source="recordTypeList"
             :value.sync="record.type"/>
       <div class="notes">
@@ -9,9 +9,7 @@
                   placeholder="在这里输入备注"
                   @update:value="onUpdateNotes"/>
       </div>
-
       <Tags/>
-
     </Layout>
   </div>
 </template>
@@ -46,18 +44,14 @@ export default class Money extends Vue {
     this.record.notes = value;
   }
 
-  onUpdateAmount(value: string) {
-    this.record.amount = parseFloat(value);
-  }
-
   saveRecord() {
     this.$store.commit('createRecord', this.record);
   }
 }
 </script>
 
-<style lang="scss">
-.layout-content {
+<style lang="scss" scoped>
+  ::v-deep .layout-content {
   display: flex;
   flex-direction: column-reverse;
 }

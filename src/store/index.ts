@@ -6,11 +6,6 @@ import router from '@/router';
 
 Vue.use(Vuex);  //把 store 绑到 Vue,prototype.$store = store
 
-type  RootState = {
-    recordList: RecordItem[];
-    tagList: Tag[];
-    currentTag?: Tag;
-}
 const store = new Vuex.Store({
     state: {
         recordList: [],
@@ -57,7 +52,7 @@ const store = new Vuex.Store({
         },
         createRecord(state, record) {
             const record2: RecordItem = clone(record);
-            record2.createdAt = new Date();
+            record2.createdAt = new Date().toISOString();
             state.recordList.push(record2);
             store.commit('saveRecords');
             // recordStore.saveRecords();
@@ -71,7 +66,7 @@ const store = new Vuex.Store({
         createTag(state, name: string) {
             const names = state.tagList.map(item => item.name);
             if (names.indexOf(name) >= 0) {
-                window.alert('标签名重复了');
+                return window.alert('标签名重复了');
             }
             const id = createId().toString();
             state.tagList.push({id, name: name});
