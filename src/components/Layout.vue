@@ -23,6 +23,7 @@ export default {
 }
 
 .content {
+  max-height: 90vh;
   //border: 1px solid blue;
   overflow: auto;
   flex-grow: 1;

@@ -10,7 +10,7 @@
     </router-link>
     <router-link to="/statistics" class="item" active-class="selected">
       <Icon name="statistics"/>
-      统计
+      明细
     </router-link>
   </nav>
 </template>
@@ -26,10 +26,11 @@ export default {
 
 nav {
   @extend %outerShadow;
+  height: 10vh;
   display: flex;
   flex-direction: row;
   font-size: 12px;
-
+  //background: #333333;
   > .item {
     padding: 2px 0;
     width: 33.33333%;
@@ -45,7 +46,7 @@ nav {
   }
 
   > .item.selected {
-    color: $color-highlight;
+    color: #FFBA40;
   }
 }
 </style>

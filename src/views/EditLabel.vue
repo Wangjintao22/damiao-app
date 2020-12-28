@@ -1,7 +1,9 @@
 <template>
   <Layout>
     <div class="navBar">
-      <Icon class="leftIcon" name="left"/>
+      <router-link to="/labels">
+        <Icon class="leftIcon" name="left"/>
+      </router-link>
       <span class="title">编辑标签</span>
       <span class="rightIcon"></span>
     </div>

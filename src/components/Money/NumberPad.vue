@@ -5,15 +5,19 @@
       <button @click="inputContent">1</button>
       <button @click="inputContent">2</button>
       <button @click="inputContent">3</button>
-      <button @click="remove">删除</button>
+      <button @click="remove">
+        <Icon name="delete"></Icon>
+      </button>
       <button @click="inputContent">4</button>
       <button @click="inputContent">5</button>
       <button @click="inputContent">6</button>
-      <button @click="clear">清空</button>
+      <button @click="clear">
+        <Icon name="clear"></Icon>
+      </button>
       <button @click="inputContent">7</button>
       <button @click="inputContent">8</button>
       <button @click="inputContent">9</button>
-      <button @click="ok" class="ok">OK</button>
+      <button @click="ok" class="ok">确定</button>
       <button class="zero" @click="inputContent">0</button>
       <button @click="inputContent">.</button>
     </div>
@@ -79,16 +83,20 @@ export default class NumberPad extends Vue {
   .output {
     @extend %clearFix;
     @extend %innerShadow;
-    font-size: 36px;
+    font-size: 32px;
     font-family: Consolas, monospace;
     padding: 9px 16px;
     text-align: right;
-    height: 72px;
+    height: 64px;
   }
 
   .buttons {
     @extend %clearFix;
 
+    .icon{
+      height: 2em!important;
+      width: 2em!important;
+    }
     > button {
       width: 25%;
       height: 64px;

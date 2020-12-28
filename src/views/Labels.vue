@@ -9,7 +9,9 @@
         </router-link>
       </div>
       <div class="createTag-wrapper">
-        <Button class="createTag" @click="createTag">新建标签</Button>
+        <Button class="createTag" @click="createTag">
+          新建标签<Icon name="cat"></Icon>
+        </Button>
       </div>
     </Layout>
   </div>
@@ -65,11 +67,20 @@ export default class Labels extends mixins(TagHelper) {
   border: none;
   height: 40px;
   padding: 0 16px;
+  font-size: 20px;
+  position: relative;
 
   &-wrapper {
     text-align: center;
     padding: 16px;
     margin-top: 28px;
+  }
+  svg{
+    width: 48px;
+    height: 48px;
+    position: absolute;
+    top: -28px;
+    right: -24px;
   }
 }
 </style>
