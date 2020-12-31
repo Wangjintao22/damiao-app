@@ -35,7 +35,7 @@ import dayjs from 'dayjs';
 import clone from '@/lib/clone';
 import Chart from '@/components/Chart.vue';
 import _ from 'lodash';
-import day from 'dayjs'
+import day from 'dayjs';
 
 @Component({
   components: {Tabs, Chart},
@@ -137,9 +137,10 @@ export default class Statistics extends Vue {
   }
 
   get groupedList() {
+    console.log('grouped list 被读取了');
     const {recordList} = this;
-
-    const newList = clone(recordList)
+    const lists: RecordItem[] = clone(recordList);
+    const newList = lists
         .filter(r => r.type === this.type)
         .sort((a, b) => dayjs(b.createdAt).valueOf() - dayjs(a.createdAt).valueOf());
     if (newList.length === 0) {
@@ -158,8 +159,6 @@ export default class Statistics extends Vue {
     }
     result.map(group => {
       group.total = group.items.reduce((sum, item) => {
-        // console.log(sum);
-        // console.log(item);
         return sum + item.amount;
       }, 0);
     });
@@ -187,11 +186,13 @@ export default class Statistics extends Vue {
   flex-direction: column;
   align-items: center;
 }
+
 .icon {
-  width: 5em!important;
-  height: 5em!important;
+  width: 5em !important;
+  height: 5em !important;
 }
-.text{
+
+.text {
   color: #99B5D7;
 }
 
